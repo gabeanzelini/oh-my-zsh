@@ -1,0 +1,51 @@
+# Lines configured by zsh-newuser-install
+typeset -ga preexec_functions
+typeset -ga precmd_functions
+typeset -ga chpwd_functions
+#setopt prompt_subst
+#get_git_prompt_info(){
+  #if [[ -x .git ]]; then
+    #BRANCH=`git branch | grep '^\*' | sed 's/^\* //'`
+    #COLOR=32
+    #if [[ "`git status | grep -c 'Untracked files'`" == '1' ]]; then
+      #COLOR=33
+    #fi
+    #if [[ "`git status | grep -c 'Changes not staged for commit'`" == "1" ]]; then
+      #COLOR=31
+    #fi
+    #echo " [%{\033[${COLOR}m%}$BRANCH%{\033[0m%}]"
+  #fi
+#}
+#PROMPT='%c$(get_git_prompt_info) %% '
+PROMPT='%c %% '
+
+EDITOR=/usr/local/bin/mvim
+alias e=$EDITOR
+HISTFILE=~/Dropbox/dotfiles/.histfile
+HISTSIZE=10000
+SAVEHIST=10000
+# End of lines configured by zsh-newuser-install
+
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:~/android-sdk-mac_x86/platform-tools/:~/Dropbox/scripts/; export PATH
+
+alias r='bundle exec rails'
+alias v=vim
+alias c='if [ -x ./script/cuke ]; then; bundle exec ./script/cuke; else; bundle exec cucumber; fi'
+alias cap='bundle exec cap'
+alias be='bundle exec'
+alias eject="sudo diskutil umount"
+alias g='git'
+alias rgrep='grep -r --include="*.rb"'
+alias dcut='cut -d" " -f'
+alias resume='vi `git status | awk "{print \\$(NF)}" | egrep "^(app|features|spec)"`'
+
+ #. /Users/gma/Dropbox/dotfiles/.zsh_completions
+
+#if [ -f `brew --prefix`/etc/autojump ]; then
+  #. `brew --prefix`/etc/autojump
+#fi
+
+[[ -s "/Users/gma/.rvm/scripts/rvm" ]] && source "/Users/gma/.rvm/scripts/rvm"  # This loads RVM into a shell session.
